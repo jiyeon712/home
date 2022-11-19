@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>과제 3-2</title>
+  <script>
+    function new_row(prev_row){
+        var new_list=[]
+        if (prev_row==1){
+            new_list[0]=1;
+        }
+        else if (prev_row==2){
+            new_list[0]=1;
+            new_list[1]=1;
+        }
+        else {
+            new_list[0]=1;
+            new_list[prev_row-1]=1;
+            var old_list = new_row(prev_row-1);
+            for (var i = 1; i < prev_row-1; i++) {
+                new_list[i]=old_list[i-1]+old_list[i];
+            }
+        }
+        return new_list;
+    }
+  </script>
+</head>
+<body>
+<script>
+  var height = prompt("파스칼의 삼각형의 높이 : ")
+  for (var j = 1; j<=height; j++) {
+      for (var k=0;k<j;k++)
+          document.write(new_row(j)[k] + " ");
+
+    document.write("<br>");
+  }
+
+</script>
+</body>
+</html>
